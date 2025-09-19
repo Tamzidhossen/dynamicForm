@@ -8,7 +8,8 @@ Route::get('/welcome', [DynamicFormController::class, 'welcome'])->name('welcome
 Route::get('/', [DynamicFormController::class, 'dynamic'])->name('dynamic');
 Route::get('/form', [DynamicFormController::class, 'form_test'])->name('form.test');
 Route::get('/new', [DynamicFormController::class, 'new'])->name('new');
-Route::post('/page', [DynamicFormController::class, 'page'])->name('page');
+Route::get('/page', [DynamicFormController::class, 'page'])->name('page');
+Route::get('/table', [DynamicFormController::class, 'table'])->name('table');
 Route::post('/dynamic/success', [DynamicFormController::class, 'dynamic_succ'])->name('dynamic.succ');
 
 Route::resource('faq', FaqController::class);

@@ -8,71 +8,55 @@
     <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.css">
 </head>
 <body>
-
-    <div class="container">
-        <div class="row my-4">
-            <div class="col-lg-10 mx-auto">
-                <div class="card shadow">
-                    <div class="card-header">
-                        <h3>Add Items</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <form action="#" method="POST" id="add-form">
-                            <div id="show-item">
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <input type="text" name="product_name[]" class="form-control" placeholder="Item Name" required>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <input type="number" name="product_price[]" class="form-control" placeholder="Item Price" required>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <input type="number" name="product_qty[]" class="form-control" placeholder="Item Quantity" required>
-                                    </div>
-                                    <div class="col-md-2 mb-3 d-grid">
-                                        <button class="btn btn-success add-item-btn">Add More</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <input type="submit" value="Add" class="btn btn-primary w-25" id="add-btn">
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <div class="container my-4">
+        <div class="card shadow p-3">
+            <div class="mb-3">
+                <button type="button" id="btn" class="btn btn-primary">Add New</button>
             </div>
+            <form id="form">
+                <div class="mb-3 form-section">
+                    <div class="mb-3">
+                        <label class="form-label">commit</label>
+                        <input type="text" class="form-control" placeholder="Enter Your Commit">
+                    </div>
+                    <button type="button" class="btn btn-primary addCommit">Commit</button>
+                    <button type="button" class="btn btn-danger removeCommit">Delete</button>
+                    <div class="new-section"></div>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" id="btn" class="btn btn-success">Submit</button>
+                    <button type="#" id="btn" class="btn btn-danger">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('.add-item-btn').click(function(event){
-                event.preventDefault();
-                $('#show-item').prepend(`<div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <input type="text" name="product_name[]" class="form-control" placeholder="Item Name" required>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <input type="number" name="product_price[]" class="form-control" placeholder="Item Price" required>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <input type="number" name="product_qty[]" class="form-control" placeholder="Item Quantity" required>
-                                    </div>
-                                    <div class="col-md-2 mb-3 d-grid">
-                                        <button class="btn btn-danger remove-item-btn">Delete</button>
-                                    </div>
-                                </div>`)
-            })
+        $(document).ready(function () {
+            $('#btn').click(function () { 
+                let addSection = $('.form-section:first').clone();
+                $('#form').prepend(addSection);
+            });
+
+            $('#form').on('click', 'addCommit', function(){
+                let addNew = `
+                    <div class="card mt-2 p-3">
+                        <label>Comment</label>
+                        <input type="text" class="form-control mb-2" name="comment[]" placeholder="Comment">
+                        <label>Context Type</label>
+                        <input type="text" class="form-control mb-2" name="contextType[]" placeholder="Context Type">
+                        <label>Video Source Type</label>
+                        <input type="text" class="form-control mb-2" name="videoSourceType[]" placeholder="Video Source Type">
+                        <button type="button" class="btn btn-danger remove-commit mt-2">Remove Commit</button>
+                    </div>
+                `;
+                $(this).siblings('.new-section').append(addNew);
+            });
+
+            $('#form').on('click', '.removeCommit', function () {
+                $(this).closest('.form-section').remove();
+            });
         });
-        // $(document).ready(function(){
-        //     $('#add-btn').click(function(){
-        //         alert();
-        //     })
-        // })
-        // $('#add-btn').click(function(){
-        //     alert('hello');
-        // })
     </script>
 </body>
 </html>

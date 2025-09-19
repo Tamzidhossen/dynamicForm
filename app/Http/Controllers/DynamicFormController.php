@@ -13,6 +13,9 @@ class DynamicFormController extends Controller
     function welcome(){
         return view('welcome');
     }
+    function table(){
+        return view('table');
+    }
     function dynamic(){
         return view('dynamic');
     }

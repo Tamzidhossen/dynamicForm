@@ -31,8 +31,9 @@
                                     <label class="form-label">Brand Title</label>
                                     <input type="text" class="form-control" name="title" placeholder="Enter Title Name" required>
                                 </div>
-                                    <button type="button" id="addCommit" class="btn btn-primary ">Add Commit</button>
-                                    <button type="button" id="removeCommit" class="btn btn-danger ">Remove Commit</button>
+                                <button type="button" id="addCommit" class="btn btn-primary ">Add Commit</button>
+                                <button type="button" id="removeCommit" class="btn btn-danger ">Remove Commit</button>
+                                    
                                 <div class="commit-section"></div>
                             </div>
                         </div>
