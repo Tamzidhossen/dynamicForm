@@ -23,3 +23,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/softvance', [DynamicFormController::class, 'softvance'])->name('softvance');
+Route::post('/softvance-data', [DynamicFormController::class, 'softvanceData'])->name('softvance.data');
